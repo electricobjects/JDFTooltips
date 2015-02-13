@@ -14,10 +14,10 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        JDFTooltips is simple library for showing tooltip-like popups on iOS
                        DESC
-  s.homepage         = "https://github.com/JoeFryer/JDFTooltips"
+  s.homepage         = "https://github.com/seviu/JDFTooltips"
   s.license          = 'MIT'
   s.author           = { "Joe Fryer" => "joe.d.fryer@gmail.com" }
-  s.source           = { :git => "https://github.com/JoeFryer/JDFTooltips.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/seviu/JDFTooltips.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/joefryer88'
 
   s.platform     = :ios, '7.0'
