@@ -37,7 +37,7 @@
     if (self.text.length < 1) {
         return 0.0f;
     }
-    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName: self.font}];
+    NSAttributedString *attributedText = self.attributedText;
     CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
     return ceil(rect.size.height);
 }

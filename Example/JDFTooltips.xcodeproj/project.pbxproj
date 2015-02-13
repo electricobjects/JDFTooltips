@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B670C81A8CB10E00E2DD6E /* NSAttributedString+DDHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B670C71A8CB10E00E2DD6E /* NSAttributedString+DDHTML.m */; };
+		30B670CA1A8CB22700E2DD6E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B670C91A8CB22700E2DD6E /* libxml2.dylib */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30B670C61A8CB10E00E2DD6E /* NSAttributedString+DDHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+DDHTML.h"; path = "NSAttributedString-DDHTML/NSAttributedString+DDHTML/NSAttributedString+DDHTML.h"; sourceTree = SOURCE_ROOT; };
+		30B670C71A8CB10E00E2DD6E /* NSAttributedString+DDHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+DDHTML.m"; path = "NSAttributedString-DDHTML/NSAttributedString+DDHTML/NSAttributedString+DDHTML.m"; sourceTree = SOURCE_ROOT; };
+		30B670C91A8CB22700E2DD6E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		3837B07CF51F79EED1E56075 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		392C01DF1E36E3DA5486B878 /* Pods-JDFTooltips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JDFTooltips.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JDFTooltips/Pods-JDFTooltips.debug.xcconfig"; sourceTree = "<group>"; };
 		42D6A4003FE78C08FD1BA80B /* libPods-JDFTooltips.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JDFTooltips.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B670CA1A8CB22700E2DD6E /* libxml2.dylib in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -119,6 +125,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30B670C91A8CB22700E2DD6E /* libxml2.dylib */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -132,6 +139,8 @@
 		6003F593195388D20070C39A /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				30B670C61A8CB10E00E2DD6E /* NSAttributedString+DDHTML.h */,
+				30B670C71A8CB10E00E2DD6E /* NSAttributedString+DDHTML.m */,
 				6003F59C195388D20070C39A /* JDFAppDelegate.h */,
 				6003F59D195388D20070C39A /* JDFAppDelegate.m */,
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
@@ -364,6 +373,7 @@
 			files = (
 				6003F59E195388D20070C39A /* JDFAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* JDFViewController.m in Sources */,
+				30B670C81A8CB10E00E2DD6E /* NSAttributedString+DDHTML.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +512,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JDFTooltips/JDFTooltips-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Expecta\"",
+					"\"${PODS_ROOT}/Headers/Public/JDFTooltips\"",
+					"\"${PODS_ROOT}/Headers/Public/Specta\"",
+					"${SDKROOT}/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "JDFTooltips/JDFTooltips-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -516,6 +533,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JDFTooltips/JDFTooltips-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Expecta\"",
+					"\"${PODS_ROOT}/Headers/Public/JDFTooltips\"",
+					"\"${PODS_ROOT}/Headers/Public/Specta\"",
+					"${SDKROOT}/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "JDFTooltips/JDFTooltips-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

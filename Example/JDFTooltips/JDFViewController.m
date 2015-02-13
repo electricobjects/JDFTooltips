@@ -10,7 +10,7 @@
 
 // Tooltips
 #import "JDFTooltips.h"
-
+#import "NSAttributedString+DDHTML.h"
 
 @interface JDFViewController ()
 
@@ -36,26 +36,26 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     CGFloat padding = 30.0f;
     CGFloat labelWidth = self.view.frame.size.width - (padding * 2);
     CGFloat labelHeight = 20.0f;
     
     UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(padding, 100.0f, labelWidth, labelHeight)];
     label1.text = @"This is a label";
-    label1.textAlignment = NSTextAlignmentCenter;
+    label1.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:label1];
     self.label1 = label1;
     
     UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake(padding, CGRectGetMaxY(label1.frame) + 100.0f, labelWidth, labelHeight)];
     label2.text = @"This is another label";
-    label2.textAlignment = NSTextAlignmentCenter;
+    label2.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:label2];
     self.label2 = label2;
     
     UILabel *label3 = [[UILabel alloc] initWithFrame:CGRectMake(padding, self.view.frame.size.height - labelHeight - padding, labelWidth, labelHeight)];
     label3.text = @"The third label";
-    label3.textAlignment = NSTextAlignmentCenter;
+    label3.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:label3];
     self.label3 = label3;
     
@@ -76,9 +76,9 @@
     CGFloat tooltipWidth = 260.0f;
     
     self.tooltipManager = [[JDFSequentialTooltipManager alloc] initWithHostView:self.view];
-    [self.tooltipManager addTooltipWithTargetView:self.label1 hostView:self.view tooltipText:@"This is a tooltip with the backrop enabled. Tap anywhere to advance to the next tooltip." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
-    [self.tooltipManager addTooltipWithTargetView:self.label2 hostView:self.view tooltipText:@"This is another tooltip.  You can choose which direction the arrow points; this one is pointing up." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
-    [self.tooltipManager addTooltipWithTargetView:self.label3 hostView:self.view tooltipText:@"This is the last tooltip. Tap anywhere to finish the sequence." arrowDirection:JDFTooltipViewArrowDirectionDown width:tooltipWidth];
+//    [self.tooltipManager addTooltipWithTargetView:self.label1 hostView:self.view tooltipText:@"This is a tooltip with the backrop enabled. Tap anywhere to advance to the next tooltip." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
+//    [self.tooltipManager addTooltipWithTargetView:self.label2 hostView:self.view tooltipText:@"This is another tooltip.  You can choose which direction the arrow points; this one is pointing up." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
+//    [self.tooltipManager addTooltipWithTargetView:self.label3 hostView:self.view tooltipText:@"This is the last tooltip. Tap anywhere to finish the sequence." arrowDirection:JDFTooltipViewArrowDirectionDown width:tooltipWidth];
     self.tooltipManager.showsBackdropView = YES;
     [self.tooltipManager showNextTooltip];
 }
@@ -88,17 +88,27 @@
     self.showWithBackdropButton.enabled = NO;
     self.showWithoutBackdropButton.enabled = NO;
     
-    CGFloat tooltipWidth = 260.0f;
+    CGFloat tooltipWidth = 320.0f;
+    
+    NSAttributedString *message = [NSAttributedString attributedStringFromHTML:@"<font size='22'>Like this entry?</font>\n<font size='13'>Save it to favorites and start receiving offers!</font>" boldFont:[UIFont boldSystemFontOfSize:12.0] italicFont:[UIFont italicSystemFontOfSize:12]];
     
     self.tooltipManager = [[JDFSequentialTooltipManager alloc] initWithHostView:self.view];
-    [self.tooltipManager addTooltipWithTargetView:self.label1 hostView:self.view tooltipText:@"This is a tooltip with the backdrop disabled. Tap on the tooltip itself to advance to the next tooltip." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
-    [self.tooltipManager addTooltipWithTargetView:self.label2 hostView:self.view tooltipText:@"This is another tooltip.  You can choose which direction the arrow points; this one is pointing up." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
+    [self.tooltipManager addTooltipWithTargetView:self.label1 hostView:self.view tooltipText:message arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
     
-    __weak JDFViewController *weakSelf = self;
-    [self.tooltipManager addTooltipWithTargetView:self.label3 hostView:self.view tooltipText:@"This is the last tooltip." arrowDirection:JDFTooltipViewArrowDirectionDown width:tooltipWidth showCompletionBlock:nil hideCompletionBlock:^{
-        weakSelf.showWithBackdropButton.enabled = YES;
-        weakSelf.showWithoutBackdropButton.enabled = YES;
-    }];
+    for (JDFTooltipView *tooltip in self.tooltipManager.tooltips) {
+        tooltip.tooltipBackgroundColour = [UIColor whiteColor];
+        tooltip.shadowColour = [UIColor blackColor];
+        tooltip.shadowEnabled = YES;
+        tooltip.textColour = [UIColor colorWithRed:0.075 green:0.651 blue:0.902 alpha:1];
+    }
+//    self.tooltipManager.backdropColour = [UIColor whiteColor];
+//    [self.tooltipManager addTooltipWithTargetView:self.label2 hostView:self.view tooltipText:@"This is another tooltip.  You can choose which direction the arrow points; this one is pointing up." arrowDirection:JDFTooltipViewArrowDirectionUp width:tooltipWidth];
+//    
+//    __weak JDFViewController *weakSelf = self;
+//    [self.tooltipManager addTooltipWithTargetView:self.label3 hostView:self.view tooltipText:@"This is the last tooltip." arrowDirection:JDFTooltipViewArrowDirectionDown width:tooltipWidth showCompletionBlock:nil hideCompletionBlock:^{
+//        weakSelf.showWithBackdropButton.enabled = YES;
+//        weakSelf.showWithoutBackdropButton.enabled = YES;
+//    }];
     self.tooltipManager.showsBackdropView = NO;
     [self.tooltipManager showNextTooltip];
 }

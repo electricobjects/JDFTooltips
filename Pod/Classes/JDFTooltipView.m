@@ -37,10 +37,10 @@
 
 #pragma mark - Setters
 
-- (void)setTooltipText:(NSString *)tooltipText
+- (void)setTooltipText:(NSAttributedString *)tooltipText
 {
     _tooltipText = tooltipText;
-    self.tooltipTextLabel.text = tooltipText;
+    self.tooltipTextLabel.attributedText = tooltipText;
 }
 
 - (void)setFont:(UIFont *)font
@@ -94,13 +94,13 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithTargetPoint:(CGPoint)targetPoint hostView:(UIView *)hostView tooltipText:(NSString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width
+- (instancetype)initWithTargetPoint:(CGPoint)targetPoint hostView:(UIView *)hostView tooltipText:(NSAttributedString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width
 {
     self = [self initWithTargetPoint:targetPoint hostView:hostView tooltipText:tooltipText arrowDirection:arrowDirection width:width showCompletionBlock:nil hideCompletionBlock:nil];
     return self;
 }
 
-- (instancetype)initWithTargetPoint:(CGPoint)targetPoint hostView:(UIView *)hostView tooltipText:(NSString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width showCompletionBlock:(JDFTooltipViewCompletionBlock)showCompletionBlock hideCompletionBlock:(JDFTooltipViewCompletionBlock)hideCompletionBlock;
+- (instancetype)initWithTargetPoint:(CGPoint)targetPoint hostView:(UIView *)hostView tooltipText:(NSAttributedString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width showCompletionBlock:(JDFTooltipViewCompletionBlock)showCompletionBlock hideCompletionBlock:(JDFTooltipViewCompletionBlock)hideCompletionBlock;
 {
     self = [self initWithTargetView:nil hostView:hostView tooltipText:tooltipText arrowDirection:arrowDirection width:width showCompletionBlock:showCompletionBlock hideCompletionBlock:hideCompletionBlock];
     if (self) {
@@ -109,13 +109,13 @@
     return self;
 }
 
-- (instancetype)initWithTargetView:(UIView *)targetView hostView:(UIView *)hostView tooltipText:(NSString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width
+- (instancetype)initWithTargetView:(UIView *)targetView hostView:(UIView *)hostView tooltipText:(NSAttributedString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width
 {
     self = [self initWithTargetView:targetView hostView:hostView tooltipText:tooltipText arrowDirection:arrowDirection width:width showCompletionBlock:nil hideCompletionBlock:nil];
     return self;
 }
 
-- (instancetype)initWithTargetView:(UIView *)targetView hostView:(UIView *)hostView tooltipText:(NSString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width showCompletionBlock:(void (^)())showCompletionBlock hideCompletionBlock:(void (^)())hideCompletionBlock
+- (instancetype)initWithTargetView:(UIView *)targetView hostView:(UIView *)hostView tooltipText:(NSAttributedString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width showCompletionBlock:(void (^)())showCompletionBlock hideCompletionBlock:(void (^)())hideCompletionBlock
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
@@ -132,12 +132,12 @@
     return self;
 }
 
-- (instancetype)initWithTargetBarButtonItem:(UIBarButtonItem *)barButtonItem hostView:(UIView *)hostView tooltipText:(NSString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width
+- (instancetype)initWithTargetBarButtonItem:(UIBarButtonItem *)barButtonItem hostView:(UIView *)hostView tooltipText:(NSAttributedString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width
 {
     return [self initWithTargetBarButtonItem:barButtonItem hostView:hostView tooltipText:tooltipText arrowDirection:arrowDirection width:width showCompletionBlock:nil hideCompletionBlock:nil];
 }
 
-- (instancetype)initWithTargetBarButtonItem:(UIBarButtonItem *)barButtonItem hostView:(UIView *)hostView tooltipText:(NSString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width showCompletionBlock:(JDFTooltipViewCompletionBlock)showCompletionBlock hideCompletionBlock:(JDFTooltipViewCompletionBlock)hideCompletionBlock
+- (instancetype)initWithTargetBarButtonItem:(UIBarButtonItem *)barButtonItem hostView:(UIView *)hostView tooltipText:(NSAttributedString *)tooltipText arrowDirection:(JDFTooltipViewArrowDirection)arrowDirection width:(CGFloat)width showCompletionBlock:(JDFTooltipViewCompletionBlock)showCompletionBlock hideCompletionBlock:(JDFTooltipViewCompletionBlock)hideCompletionBlock
 {
     self = [self initWithTargetView:nil hostView:hostView tooltipText:tooltipText arrowDirection:arrowDirection width:width showCompletionBlock:showCompletionBlock hideCompletionBlock:hideCompletionBlock];
     if (self) {
@@ -158,8 +158,8 @@
     self.textColour = [UIColor whiteColor];
     
     self.tooltipTextLabel = [[UILabel alloc] initWithFrame:self.bounds];
-    self.tooltipTextLabel.text = self.tooltipText;
-    self.tooltipTextLabel.textAlignment = NSTextAlignmentCenter;
+    self.tooltipTextLabel.attributedText = self.tooltipText;
+    self.tooltipTextLabel.textAlignment = NSTextAlignmentLeft;
     self.tooltipTextLabel.numberOfLines = 0;
     self.tooltipTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.tooltipTextLabel.textColor = self.textColour;
@@ -319,7 +319,7 @@
     tooltipFrame.size.width = width;
     tooltipFrame.origin.x = tooltipFrame.origin.x - [self overflowAdjustmentForFrame:tooltipFrame withHostViewSize:hostViewSize];
     tooltipFrame.size.height = self.tooltipTextLabel.frame.size.height + [self labelPadding] + [self arrowHeight];
-
+    
     if (arrowDirection == JDFTooltipViewArrowDirectionUp) {
         
     } else if (arrowDirection == JDFTooltipViewArrowDirectionRight) {
@@ -361,7 +361,7 @@
 
 - (CGFloat)arrowWidth
 {
-    return 14.0f;
+    return 18.0f;
 }
 
 - (CGFloat)minimumArrowPadding
@@ -371,7 +371,7 @@
 
 - (CGFloat)labelPadding
 {
-    return 20.0f;
+    return 40.0f;
 }
 
 - (CGFloat)minimumPaddingToSuperview
