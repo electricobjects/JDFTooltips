@@ -297,17 +297,17 @@
     CGPoint point = CGPointZero;
     CGRect targetViewFrame = [targetView.superview convertRect:targetView.frame toView:self.tooltipSuperview];
     if (arrowDirection == JDFTooltipViewArrowDirectionLeft) {
-        point.x = CGRectGetMaxX(targetViewFrame);
+        point.x = CGRectGetMaxX(targetViewFrame) + [self tooltipPadding];
         point.y = targetViewFrame.origin.y + (targetViewFrame.size.height / 2);
     } else if (arrowDirection == JDFTooltipViewArrowDirectionRight) {
-        point.x = targetViewFrame.origin.x;
+        point.x = targetViewFrame.origin.x - [self tooltipPadding];
         point.y = targetViewFrame.origin.y + (targetViewFrame.size.height / 2);
     } else if (arrowDirection == JDFTooltipViewArrowDirectionUp) {
         point.x = targetViewFrame.origin.x + (targetViewFrame.size.width / 2);
-        point.y = CGRectGetMaxY(targetViewFrame);
+        point.y = CGRectGetMaxY(targetViewFrame) + [self tooltipPadding];
     } else if (arrowDirection == JDFTooltipViewArrowDirectionDown) {
         point.x = targetViewFrame.origin.x + (targetViewFrame.size.width / 2);
-        point.y = targetViewFrame.origin.y;
+        point.y = targetViewFrame.origin.y - [self tooltipPadding];
     }
     return point;
 }
@@ -333,7 +333,9 @@
     }
     
     if (arrowDirection == JDFTooltipViewArrowDirectionUp || arrowDirection == JDFTooltipViewArrowDirectionDown) {
-        CGFloat minOffset = [self arrowHeight] + [self minimumArrowPadding];
+        CGFloat ah = [self arrowHeight];
+        CGFloat ap = [self minimumArrowPadding];
+        CGFloat minOffset = ah + ap;
         CGFloat offset = point.x - tooltipFrame.origin.x;
         if (offset < minOffset) {
             tooltipFrame.origin.x = point.x - minOffset;
@@ -364,9 +366,14 @@
     return 18.0f;
 }
 
+- (CGFloat)tooltipPadding
+{
+    return 4.0f;
+}
+
 - (CGFloat)minimumArrowPadding
 {
-    return 10.0f;
+    return 15.0f;
 }
 
 - (CGFloat)labelPadding
