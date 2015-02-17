@@ -358,7 +358,7 @@
 
 - (CGFloat)arrowHeight
 {
-    return 14.0f;
+    return 9.0f;
 }
 
 - (CGFloat)arrowWidth
@@ -443,7 +443,7 @@
     //// Group
     {
         //// Rectangle Drawing
-        CGRect rect = CGRectMake(CGRectGetMinX(frame) + 14, CGRectGetMinY(frame) + 12, CGRectGetWidth(frame) - 28, CGRectGetHeight(frame) - 24);
+        CGRect rect = CGRectMake(CGRectGetMinX(frame) + 14, CGRectGetMinY(frame) + arrowHeight, CGRectGetWidth(frame) - 28, CGRectGetHeight(frame) - arrowHeight);
         UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect  cornerRadius: 5];
         [backgroundColour setFill];
         [rectanglePath fill];
@@ -455,10 +455,9 @@
         CGContextRotateCTM(context, -angle * M_PI / 180);
         
         UIBezierPath* bezierPath = UIBezierPath.bezierPath;
-        [bezierPath moveToPoint: CGPointMake(-0, 0.02)];
-        [bezierPath addCurveToPoint: CGPointMake(-7, arrowHeight) controlPoint1: CGPointMake(-2, 0.02) controlPoint2: CGPointMake(-7, arrowHeight)];
-        [bezierPath addLineToPoint: CGPointMake(7, arrowHeight)];
-        [bezierPath addCurveToPoint: CGPointMake(-0, 0.02) controlPoint1: CGPointMake(7, arrowHeight) controlPoint2: CGPointMake(2, 0.02)];
+        [bezierPath moveToPoint: CGPointMake(0, 0)];
+        [bezierPath addLineToPoint: CGPointMake(-arrowHeight, arrowHeight)];
+        [bezierPath addLineToPoint: CGPointMake(arrowHeight, arrowHeight)];
         [bezierPath closePath];
         [backgroundColour setFill];
         [bezierPath fill];
