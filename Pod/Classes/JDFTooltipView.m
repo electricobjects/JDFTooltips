@@ -162,6 +162,7 @@
     self.tooltipTextLabel.textAlignment = NSTextAlignmentLeft;
     self.tooltipTextLabel.numberOfLines = 0;
     self.tooltipTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
     self.tooltipTextLabel.textColor = self.textColour;
     self.font = [UIFont systemFontOfSize:14.0f];
     self.tooltipTextLabel.backgroundColor = [UIColor clearColor];
@@ -378,7 +379,7 @@
 
 - (CGFloat)labelPadding
 {
-    return 40.0f;
+    return 30.0f;
 }
 
 - (CGFloat)minimumPaddingToSuperview
@@ -443,7 +444,7 @@
     //// Group
     {
         //// Rectangle Drawing
-        CGRect rect = CGRectMake(CGRectGetMinX(frame) + 14, CGRectGetMinY(frame) + arrowHeight, CGRectGetWidth(frame) - 28, CGRectGetHeight(frame) - arrowHeight);
+        CGRect rect = CGRectMake(CGRectGetMinX(frame) + arrowHeight, CGRectGetMinY(frame) + arrowHeight, CGRectGetWidth(frame) - arrowHeight*2, CGRectGetHeight(frame) - arrowHeight*2);
         UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect  cornerRadius: 5];
         [backgroundColour setFill];
         [rectanglePath fill];
