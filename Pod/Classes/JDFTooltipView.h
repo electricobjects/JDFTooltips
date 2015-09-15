@@ -19,6 +19,10 @@ typedef NS_ENUM(NSInteger, JDFTooltipViewArrowDirection){
      */
     JDFTooltipViewArrowDirectionUp,
     /**
+     *  The arrow is on top of the tooltip, pointing up.
+     */
+    JDFTooltipViewArrowDirectionUpRight,
+    /**
      *  The arrow is on the right of the tooltip, pointing to the right.
      */
     JDFTooltipViewArrowDirectionRight,

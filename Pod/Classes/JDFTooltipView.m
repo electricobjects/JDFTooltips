@@ -306,6 +306,9 @@
     } else if (arrowDirection == JDFTooltipViewArrowDirectionUp) {
         point.x = targetViewFrame.origin.x + (targetViewFrame.size.width / 2);
         point.y = CGRectGetMaxY(targetViewFrame) + [self tooltipPadding];
+    } else if (arrowDirection == JDFTooltipViewArrowDirectionUpRight) {
+        point.x = targetViewFrame.origin.x + (targetViewFrame.size.width);
+        point.y = CGRectGetMaxY(targetViewFrame) + [self tooltipPadding];
     } else if (arrowDirection == JDFTooltipViewArrowDirectionDown) {
         point.x = targetViewFrame.origin.x + (targetViewFrame.size.width / 2);
         point.y = targetViewFrame.origin.y - [self tooltipPadding];
