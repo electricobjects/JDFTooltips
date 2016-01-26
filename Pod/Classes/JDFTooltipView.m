@@ -447,8 +447,12 @@
     //// Group
     {
         //// Rectangle Drawing
-        CGRect rect = CGRectMake(CGRectGetMinX(frame) + arrowHeight, CGRectGetMinY(frame) + arrowHeight, CGRectGetWidth(frame) - arrowHeight*2, CGRectGetHeight(frame) - arrowHeight*2);
-        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect  cornerRadius: 5];
+        CGFloat horizontalMargin = arrowHeight;
+        if (self.arrowDirection == JDFTooltipViewArrowDirectionDown || self.arrowDirection == JDFTooltipViewArrowDirectionUp){
+            horizontalMargin = 0;
+        }
+        CGRect rect = CGRectMake(CGRectGetMinX(frame) + horizontalMargin, CGRectGetMinY(frame) + arrowHeight, CGRectGetWidth(frame) - horizontalMargin*2, CGRectGetHeight(frame) - arrowHeight*2);
+        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRoundedRect:rect  cornerRadius: 0];
         [backgroundColour setFill];
         [rectanglePath fill];
         
