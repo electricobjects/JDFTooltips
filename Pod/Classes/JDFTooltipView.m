@@ -60,7 +60,7 @@
     _shadowEnabled = shadowEnabled;
     
     if (shadowEnabled) {
-        self.layer.cornerRadius = 5.0f;
+        self.layer.cornerRadius = 0.0f;
         self.layer.shadowColor = self.shadowColour.CGColor;
         self.layer.shadowOpacity = 0.5f;
         self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
@@ -168,7 +168,7 @@
     self.tooltipTextLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.tooltipTextLabel];
     
-    self.layer.cornerRadius = 5.0f;
+    self.layer.cornerRadius = 0.0f;
     self.shadowColour = [UIColor grayColor];
     self.layer.shadowOpacity = 0.5f;
     self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
