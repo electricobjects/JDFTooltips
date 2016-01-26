@@ -382,7 +382,7 @@
 
 - (CGFloat)labelPadding
 {
-    return 30.0f;
+    return 40.0f;
 }
 
 - (CGFloat)minimumPaddingToSuperview
